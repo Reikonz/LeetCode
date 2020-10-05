@@ -1,0 +1,23 @@
+class Solution:
+    def lengthOfLongestSubstring(self, s: str) -> int:
+        start_index = 0        
+        total_count = 0
+        # Iterate through all starting indexes
+        for start in range(len(s)):            
+            start_index = start
+            curr_string = ''            
+            curr_count = 0            
+            
+            # Iterate through string with the current start index
+            for curr in range(len(s)-start):
+                if s[curr+start] in curr_string:                                
+                    break
+                else:
+                    curr_string = curr_string + s[curr+start]                
+                curr_count = curr_count + 1
+            
+            # Replace the new total highest count
+            if total_count < curr_count:
+                total_count = curr_count
+                
+        return total_count
